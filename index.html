@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculadora">
+            <div class="campo">
+                <input type="text" name="" id="resultado" placeholder="0" disabled="disabled">
+            </div>
+            <div class="row">
+              <button onclick="calcular('acao', 'c')" type="button" style="width: 8.7em;">C</button>
+              <button onclick="calcular('acao', '/')" type="button">/</button>
+              <button onclick="calcular('acao', '*')" type="button">x</button>
+            </div>
+            <div class="row">
+                <button onclick="calcular('valor', '7')" type="button">7</button>
+                <button onclick="calcular('valor', '8')" type="button">8</button>
+                <button onclick="calcular('valor', '9')" type="button">9</button>
+                <button onclick="calcular('acao', '-')" type="button">-</button>
+              </div>
+              <div class="row">
+                <button onclick="calcular('valor', '4')" type="button">4</button>
+                <button onclick="calcular('valor', '5')" type="button">5</button>
+                <button onclick="calcular('valor', '6')" type="button">6</button>
+                <button onclick="calcular('acao', '+')" type="button">+</button>
+              </div>
+              <div class="row">
+                <button onclick="calcular('valor', '1')" type="button">1</button>
+                <button onclick="calcular('valor', '2')" type="button">2</button>
+                <button onclick="calcular('valor', '3')" type="button">3</button>
+                <button onclick="calcular('acao', '=')" type="button" style="height: 9em;">=</button>
+              </div>
+              <div class="row" style="width: 12.1em; margin-left: -3.9em;">
+                <button onclick="calcular('valor', '0')" type="button" style="width: 8.5em;">0</button>
+                <button onclick="calcular('acao', '.')" type="button" style="width: 3.7em;">.</button>
+              </div>
+        </div>
+    </div>
+    <script>
+     function calcular(tipo, valor){
+      if(tipo === 'acao'){
+        if(valor === 'c'){
+          document.getElementById('resultado').value = '';
+        }
+        if(valor === '+' || valor === '-' || valor === '*' || valor === '/' || valor === '.'){
+          document.getElementById('resultado').value += valor;
+        }
+        if(valor === '='){
+         var valor_campo = document.getElementById('resultado').value;
+         document.getElementById('resultado').value = (eval(valor_campo));
+        }
+      }else{
+        if(tipo === 'valor'){
+          var valor_campo = document.getElementById('resultado').value;
+         document.getElementById('resultado').value = valor_campo + valor;
+        }
+      }
+     }
+    </script>
+    
+</body>
+</html>
